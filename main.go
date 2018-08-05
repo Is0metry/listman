@@ -16,7 +16,7 @@ var fl = list.FileList{Root: "root"}
 func viewHandler(w http.ResponseWriter, r *http.Request) {
 	path := r.URL.Path[len("/view/"):]
 	if _, err := os.Stat(path + ".txt"); os.IsNotExist(err) {
-		file, err := os.Create(path + ".txt")
+		file, err := os.Create("lists/" + path + ".txt")
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}

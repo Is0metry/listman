@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"path/filepath"
 )
 
 //FileList uses files to store lists
@@ -14,7 +13,7 @@ type FileList struct {
 
 //GetList gets a list
 func (fl *FileList) GetList(name string) (*List, error) {
-	filename := name + ".txt"
+	filename := "lists/" + name + ".txt"
 	file, err := os.Open(filename)
 	if err != nil {
 		return nil, err
@@ -33,7 +32,7 @@ func (fl *FileList) GetList(name string) (*List, error) {
 
 //AddItem adds an item to the list
 func (fl *FileList) AddItem(name string, item string) error {
-	filename, _ := filepath.Abs(name + ".txt")
+	filename := "lists/" + name + ".txt"
 	file, err := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY, os.ModeAppend)
 	if err != nil {
 		return err
@@ -63,7 +62,7 @@ func (fl *FileList) writeList(filename string, lst *List) error {
 	return nil
 }
 func (fl *FileList) RemoveItem(name string, item int) error {
-	filename := name + ".txt"
+	filename := "lists/" + name + ".txt"
 	lst, err := fl.GetList(name)
 	if err != nil {
 		return err
