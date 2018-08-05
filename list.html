@@ -1,0 +1,14 @@
+<head>
+    <title>{{.ListName}}</title>
+</head>
+<body>
+    <ul>
+    {{range $i,$val := .Items}}
+    <li><a href="/view/{{$val}}"> {{$val}} </a> &nbsp; <a href="/remove/{{$.ListName}}/{{$i}}">delete</a></li>
+    {{end}}
+    </ul>
+    <form action="/add/{{.ListName}}" method="POST">
+    <input type="text" name="newItem">
+    <button type="submit">Add Item</button>
+    </form>
+</body>
