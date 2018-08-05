@@ -1,6 +1,6 @@
 # listman
 a simple nested list server written in go
 
-#Todo
+# Todo
 Local Database Integration
 GCP Integration
